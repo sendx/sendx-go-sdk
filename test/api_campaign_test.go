@@ -11,20 +11,21 @@ package sendx
 
 import (
 	"context"
+	"testing"
+
+	sendx "github.com/sendx/sendx-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func Test_sendx_CampaignAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 
 	t.Run("Test CampaignAPIService CreateCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.CampaignAPI.CreateCampaign(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_sendx_CampaignAPIService(t *testing.T) {
 
 	t.Run("Test CampaignAPIService DeleteCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var campaignId string
 
@@ -50,7 +51,7 @@ func Test_sendx_CampaignAPIService(t *testing.T) {
 
 	t.Run("Test CampaignAPIService EditCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var campaignId string
 
@@ -64,7 +65,7 @@ func Test_sendx_CampaignAPIService(t *testing.T) {
 
 	t.Run("Test CampaignAPIService GetAllCampaigns", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.CampaignAPI.GetAllCampaigns(context.Background()).Execute()
 
@@ -76,7 +77,7 @@ func Test_sendx_CampaignAPIService(t *testing.T) {
 
 	t.Run("Test CampaignAPIService GetCampaignById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var campaignId string
 

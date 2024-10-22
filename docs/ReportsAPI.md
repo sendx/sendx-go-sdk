@@ -25,15 +25,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	campaignId := "campaignId_example" // string | The ID of the campaign to retrieve the report data for
 	integrationType := "integrationType_example" // string | Type of integration for the report data (optional) (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.ReportsAPI.GetCampaignReport(context.Background(), campaignId).IntegrationType(integrationType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ReportsAPI.GetCampaignReport``: %v\n", err)

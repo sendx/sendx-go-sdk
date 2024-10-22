@@ -29,14 +29,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	campaignRequest := *openapiclient.NewCampaignRequest() // CampaignRequest | The campaign content
+	campaignRequest := *sendx.NewCampaignRequest() // CampaignRequest | The campaign content
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.CampaignAPI.CreateCampaign(context.Background()).CampaignRequest(campaignRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CampaignAPI.CreateCampaign``: %v\n", err)
@@ -95,14 +95,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	campaignId := "campaignId_example" // string | The ID of the campaign to delete
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.CampaignAPI.DeleteCampaign(context.Background(), campaignId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CampaignAPI.DeleteCampaign``: %v\n", err)
@@ -165,15 +165,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	campaignRequest := *openapiclient.NewCampaignRequest() // CampaignRequest | 
+	campaignRequest := *sendx.NewCampaignRequest() // CampaignRequest | 
 	campaignId := "campaignId_example" // string | The ID of the campaign to edit
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.CampaignAPI.EditCampaign(context.Background(), campaignId).CampaignRequest(campaignRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CampaignAPI.EditCampaign``: %v\n", err)
@@ -237,7 +237,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
@@ -245,8 +245,8 @@ func main() {
 	limit := int32(56) // int32 | Limit for pagination (optional) (default to 20)
 	search := "search_example" // string | Search term to filter campaigns (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.CampaignAPI.GetAllCampaigns(context.Background()).Offset(offset).Limit(limit).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CampaignAPI.GetAllCampaigns``: %v\n", err)
@@ -307,14 +307,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	campaignId := "campaignId_example" // string | The ID of the campaign to retrieve.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.CampaignAPI.GetCampaignById(context.Background(), campaignId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CampaignAPI.GetCampaignById``: %v\n", err)

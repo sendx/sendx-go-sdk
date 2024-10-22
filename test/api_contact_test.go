@@ -11,20 +11,21 @@ package sendx
 
 import (
 	"context"
+	"testing"
+
+	sendx "github.com/sendx/sendx-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func Test_sendx_ContactAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 
 	t.Run("Test ContactAPIService CreateContact", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ContactAPI.CreateContact(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_sendx_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService DeleteContact", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var contactId string
 
@@ -50,7 +51,7 @@ func Test_sendx_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService GetAllContacts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.ContactAPI.GetAllContacts(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_sendx_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService GetContactById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var contactId string
 
@@ -76,7 +77,7 @@ func Test_sendx_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService UnsubscribeContact", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var contactId string
 
@@ -90,7 +91,7 @@ func Test_sendx_ContactAPIService(t *testing.T) {
 
 	t.Run("Test ContactAPIService UpdateContact", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var contactId string
 

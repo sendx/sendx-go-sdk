@@ -26,14 +26,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	senderRequest := *openapiclient.NewSenderRequest("Linus", "linus@linux.org") // SenderRequest | 
+	senderRequest := *sendx.NewSenderRequest("Linus", "linus@linux.org") // SenderRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.SenderAPI.CreateSender(context.Background()).SenderRequest(senderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SenderAPI.CreateSender``: %v\n", err)
@@ -92,7 +92,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
@@ -100,8 +100,8 @@ func main() {
 	limit := int32(56) // int32 | Maximum number of records to return (optional) (default to 10)
 	search := "search_example" // string | Search keyword to filter senders by name or email (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.SenderAPI.GetAllSenders(context.Background()).Offset(offset).Limit(limit).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SenderAPI.GetAllSenders``: %v\n", err)

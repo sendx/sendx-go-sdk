@@ -29,14 +29,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	tagRequest := *openapiclient.NewTagRequest() // TagRequest | The tag content
+	tagRequest := *sendx.NewTagRequest() // TagRequest | The tag content
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.TagsAPI.CreateTag(context.Background()).TagRequest(tagRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.CreateTag``: %v\n", err)
@@ -95,14 +95,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	tagId := "tagId_example" // string | ID of the tag to delete
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.TagsAPI.DeleteTag(context.Background(), tagId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.DeleteTag``: %v\n", err)
@@ -165,7 +165,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
@@ -173,8 +173,8 @@ func main() {
 	limit := int32(56) // int32 | Limit the number of results (optional)
 	search := "search_example" // string | Search term to filter tags (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.TagsAPI.GetAllTags(context.Background()).Offset(offset).Limit(limit).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.GetAllTags``: %v\n", err)
@@ -235,14 +235,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	tagId := "tagId_example" // string | ID of the tag you want to fetch
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.TagsAPI.GetTagById(context.Background(), tagId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.GetTagById``: %v\n", err)
@@ -305,15 +305,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	tagRequest := *openapiclient.NewTagRequest() // TagRequest | The tag content
+	tagRequest := *sendx.NewTagRequest() // TagRequest | The tag content
 	tagId := "tagId_example" // string | ID of the tag to update
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.TagsAPI.UpdateTag(context.Background(), tagId).TagRequest(tagRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TagsAPI.UpdateTag``: %v\n", err)

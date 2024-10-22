@@ -11,20 +11,21 @@ package sendx
 
 import (
 	"context"
+	"testing"
+
+	sendx "github.com/sendx/sendx-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func Test_sendx_TagsAPIService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 
 	t.Run("Test TagsAPIService CreateTag", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TagsAPI.CreateTag(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_sendx_TagsAPIService(t *testing.T) {
 
 	t.Run("Test TagsAPIService DeleteTag", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var tagId string
 
@@ -50,7 +51,7 @@ func Test_sendx_TagsAPIService(t *testing.T) {
 
 	t.Run("Test TagsAPIService GetAllTags", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.TagsAPI.GetAllTags(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_sendx_TagsAPIService(t *testing.T) {
 
 	t.Run("Test TagsAPIService GetTagById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var tagId string
 
@@ -76,7 +77,7 @@ func Test_sendx_TagsAPIService(t *testing.T) {
 
 	t.Run("Test TagsAPIService UpdateTag", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var tagId string
 

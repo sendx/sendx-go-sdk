@@ -30,14 +30,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	contactRequest := *openapiclient.NewContactRequest() // ContactRequest | 
+	contactRequest := *sendx.NewContactRequest() // ContactRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.ContactAPI.CreateContact(context.Background()).ContactRequest(contactRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.CreateContact``: %v\n", err)
@@ -96,14 +96,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	contactId := "contactId_example" // string | The Contact ID to delete
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.ContactAPI.DeleteContact(context.Background(), contactId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.DeleteContact``: %v\n", err)
@@ -166,7 +166,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
@@ -175,8 +175,8 @@ func main() {
 	contactType := "contactType_example" // string | Filter contacts by type (optional)
 	search := "search_example" // string | Search term to filter contacts (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.ContactAPI.GetAllContacts(context.Background()).Offset(offset).Limit(limit).ContactType(contactType).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.GetAllContacts``: %v\n", err)
@@ -238,14 +238,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	contactId := "sendxid123" // string | The ID of the contact to retrieve.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.ContactAPI.GetContactById(context.Background(), contactId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.GetContactById``: %v\n", err)
@@ -308,14 +308,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	contactId := "sendx123" // string | The Contact ID to unsubscribe
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.ContactAPI.UnsubscribeContact(context.Background(), contactId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.UnsubscribeContact``: %v\n", err)
@@ -378,15 +378,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/sendx/sendx-go-sdk"
+	sendx "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	contactRequest := *openapiclient.NewContactRequest() // ContactRequest | 
+	contactRequest := *sendx.NewContactRequest() // ContactRequest | 
 	contactId := "sendxid123" // string | The ID of the Contact to update
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
 	resp, r, err := apiClient.ContactAPI.UpdateContact(context.Background(), contactId).ContactRequest(contactRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.UpdateContact``: %v\n", err)

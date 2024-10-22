@@ -2,7 +2,9 @@
 
 # Introduction 
 
-SendX is an email marketing product. It helps you convert website visitors to customers, send them promotional emails, engage with them using drip sequences and craft custom journeys using powerful but simple automations. The SendX API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+SendX is an email marketing product. It helps you convert website visitors to customers, send them promotional emails, engage with them using drip sequences and craft custom journeys using powerful but simple automations. 
+
+The SendX API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 The SendX Rest API doesn’t support bulk updates. You can work on only one object per request. <br>
 
 
@@ -11,62 +13,56 @@ The SendX Rest API doesn’t support bulk updates. You can work on only one obje
 Install the following dependencies:
 
 ```sh
-go get github.com/stretchr/testify/assert
-go get golang.org/x/net/context
+go get github.com/sendx/sendx-go-sdk
 ```
 
-Put the package under your project folder and add the following in import:
+## Examples
 
 ```go
-import sendx "github.com/sendx/sendx-go-sdk"
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	
+	sendx "github.com/sendx/sendx-go-sdk"
+)
+
+func main() {
+	ctx := context.WithValue(
+		context.Background(),
+		sendx.ContextAPIKeys,
+		map[string]sendx.APIKey{
+			"apiKeyAuth": {Key: "YOUR_API_KEY"},
+		},
+	)
+
+	contactRequest := *sendx.NewContactRequest() // ContactRequest |
+	contactRequest.Email = sendx.PtrString("jane@doe.com")
+	contactRequest.FirstName = sendx.PtrString("Jane")
+	contactRequest.LastName = sendx.PtrString("Doe")
+	contactRequest.Company = sendx.PtrString("Tech Solutions Inc.")
+	contactRequest.LastTrackedIp = sendx.PtrString("34.94.159.140")
+	contactRequest.CustomFields = &map[string]string{"K2mxBVReqBhbwx9e0ItSea": "VIP", "7o3Tl1aY2yKp2X1aflRjOL": "Special Offer Subscriber"}
+	contactRequest.Lists = []string{"1244"}
+	contactRequest.Tags = []string{"MKdhTovsTJDetCyrJmRySL"}
+
+	configuration := sendx.NewConfiguration()
+	apiClient := sendx.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContactAPI.CreateContact(ctx).ContactRequest(contactRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContactAPI.CreateContact``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateContact`: Response
+	fmt.Fprintf(os.Stdout, "Response from `ContactAPI.CreateContact`: %v\n", resp)
+
+}
+
 ```
 
-To use a proxy, set the environment variable `HTTP_PROXY`:
 
-```go
-os.Setenv("HTTP_PROXY", "http://proxy_name:proxy_port")
-```
-
-## Configuration of Server URL
-
-Default configuration comes with `Servers` field that contains server objects as defined in the OpenAPI specification.
-
-### Select Server Configuration
-
-For using other server than the one defined on index 0 set context value `sendx.ContextServerIndex` of type `int`.
-
-```go
-ctx := context.WithValue(context.Background(), sendx.ContextServerIndex, 1)
-```
-
-### Templated Server URL
-
-Templated server URL is formatted using default variables from configuration or from context value `sendx.ContextServerVariables` of type `map[string]string`.
-
-```go
-ctx := context.WithValue(context.Background(), sendx.ContextServerVariables, map[string]string{
-	"basePath": "v2",
-})
-```
-
-Note, enum values are always validated and all unused variables are silently ignored.
-
-### URLs Configuration per Operation
-
-Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
-An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sendx.ContextOperationServerIndices` and `sendx.ContextOperationServerVariables` context maps.
-
-```go
-ctx := context.WithValue(context.Background(), sendx.ContextOperationServerIndices, map[string]int{
-	"{classname}Service.{nickname}": 2,
-})
-ctx = context.WithValue(context.Background(), sendx.ContextOperationServerVariables, map[string]map[string]string{
-	"{classname}Service.{nickname}": {
-		"port": "8443",
-	},
-})
-```
 
 ## Documentation for API Endpoints
 
@@ -134,7 +130,7 @@ Authentication schemes defined for the API:
 - **API key parameter name**: X-Team-ApiKey
 - **Location**: HTTP header
 
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: X-Team-ApiKey and passed in as the auth context for each request.
+Note, each API key must be added to a map of `map[string]APIKey` where the key is the team api key you get via SendX dashboard and passed in as the auth context for each request.
 
 Example
 
@@ -143,7 +139,7 @@ auth := context.WithValue(
 		context.Background(),
 		sendx.ContextAPIKeys,
 		map[string]sendx.APIKey{
-			"X-Team-ApiKey": {Key: "API_KEY_STRING"},
+			"apiKeyAuth": {Key: "Your API Key"},
 		},
 	)
 r, err := client.Service.Operation(auth, args)
