@@ -151,7 +151,7 @@ func (a *ContactAPIService) CreateContactExecute(r ApiCreateContactRequest) (*Re
 type ApiDeleteContactRequest struct {
 	ctx context.Context
 	ApiService *ContactAPIService
-	contactId string
+	identifier string
 }
 
 func (r ApiDeleteContactRequest) Execute() (*Response, *http.Response, error) {
@@ -164,14 +164,14 @@ DeleteContact Delete Contact
 Deletes Contact
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contactId The Contact ID to delete
+ @param identifier The Contact ID/ Email to delete
  @return ApiDeleteContactRequest
 */
-func (a *ContactAPIService) DeleteContact(ctx context.Context, contactId string) ApiDeleteContactRequest {
+func (a *ContactAPIService) DeleteContact(ctx context.Context, identifier string) ApiDeleteContactRequest {
 	return ApiDeleteContactRequest{
 		ApiService: a,
 		ctx: ctx,
-		contactId: contactId,
+		identifier: identifier,
 	}
 }
 
@@ -190,8 +190,8 @@ func (a *ContactAPIService) DeleteContactExecute(r ApiDeleteContactRequest) (*Re
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/contact/{contactId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
+	localVarPath := localBasePath + "/contact/{identifier}"
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,7 +427,7 @@ func (a *ContactAPIService) GetAllContactsExecute(r ApiGetAllContactsRequest) ([
 type ApiGetContactByIdRequest struct {
 	ctx context.Context
 	ApiService *ContactAPIService
-	contactId string
+	identifier string
 }
 
 func (r ApiGetContactByIdRequest) Execute() (*Contact, *http.Response, error) {
@@ -435,19 +435,19 @@ func (r ApiGetContactByIdRequest) Execute() (*Contact, *http.Response, error) {
 }
 
 /*
-GetContactById Get Contact by ID
+GetContactById Get Contact by Identifier
 
-Retrieve a specific contact by its contactId.
+Retrieve a specific contact by its identifier.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contactId The ID of the contact to retrieve.
+ @param identifier The ID or Email of the contact to retrieve.
  @return ApiGetContactByIdRequest
 */
-func (a *ContactAPIService) GetContactById(ctx context.Context, contactId string) ApiGetContactByIdRequest {
+func (a *ContactAPIService) GetContactById(ctx context.Context, identifier string) ApiGetContactByIdRequest {
 	return ApiGetContactByIdRequest{
 		ApiService: a,
 		ctx: ctx,
-		contactId: contactId,
+		identifier: identifier,
 	}
 }
 
@@ -466,8 +466,8 @@ func (a *ContactAPIService) GetContactByIdExecute(r ApiGetContactByIdRequest) (*
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/contact/{contactId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
+	localVarPath := localBasePath + "/contact/{identifier}"
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -544,7 +544,7 @@ func (a *ContactAPIService) GetContactByIdExecute(r ApiGetContactByIdRequest) (*
 type ApiUnsubscribeContactRequest struct {
 	ctx context.Context
 	ApiService *ContactAPIService
-	contactId string
+	identifier string
 }
 
 func (r ApiUnsubscribeContactRequest) Execute() (*Response, *http.Response, error) {
@@ -557,14 +557,14 @@ UnsubscribeContact Unsubscribe Contact
 Unsubscribe a globally existing contact
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contactId The Contact ID to unsubscribe
+ @param identifier The Contact ID or email to unsubscribe
  @return ApiUnsubscribeContactRequest
 */
-func (a *ContactAPIService) UnsubscribeContact(ctx context.Context, contactId string) ApiUnsubscribeContactRequest {
+func (a *ContactAPIService) UnsubscribeContact(ctx context.Context, identifier string) ApiUnsubscribeContactRequest {
 	return ApiUnsubscribeContactRequest{
 		ApiService: a,
 		ctx: ctx,
-		contactId: contactId,
+		identifier: identifier,
 	}
 }
 
@@ -583,8 +583,8 @@ func (a *ContactAPIService) UnsubscribeContactExecute(r ApiUnsubscribeContactReq
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/contact/unsubscribe/{contactId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
+	localVarPath := localBasePath + "/contact/unsubscribe/{identifier}"
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -662,7 +662,7 @@ type ApiUpdateContactRequest struct {
 	ctx context.Context
 	ApiService *ContactAPIService
 	contactRequest *ContactRequest
-	contactId string
+	identifier string
 }
 
 func (r ApiUpdateContactRequest) ContactRequest(contactRequest ContactRequest) ApiUpdateContactRequest {
@@ -680,14 +680,14 @@ UpdateContact Update Contact
 Update Contact with given data
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param contactId The ID of the Contact to update
+ @param identifier The ID or email of the Contact to update
  @return ApiUpdateContactRequest
 */
-func (a *ContactAPIService) UpdateContact(ctx context.Context, contactId string) ApiUpdateContactRequest {
+func (a *ContactAPIService) UpdateContact(ctx context.Context, identifier string) ApiUpdateContactRequest {
 	return ApiUpdateContactRequest{
 		ApiService: a,
 		ctx: ctx,
-		contactId: contactId,
+		identifier: identifier,
 	}
 }
 
@@ -706,8 +706,8 @@ func (a *ContactAPIService) UpdateContactExecute(r ApiUpdateContactRequest) (*Co
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/contact/{contactId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"contactId"+"}", url.PathEscape(parameterValueToString(r.contactId, "contactId")), -1)
+	localVarPath := localBasePath + "/contact/{identifier}"
+	localVarPath = strings.Replace(localVarPath, "{"+"identifier"+"}", url.PathEscape(parameterValueToString(r.identifier, "identifier")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
