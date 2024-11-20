@@ -21,7 +21,7 @@ var _ MappedNullable = &TrackRequest{}
 // TrackRequest struct for TrackRequest
 type TrackRequest struct {
 	// Email address of the contact to track.
-	Email *Email `json:"email,omitempty"`
+	Email *string `json:"email,omitempty"`
 	AddTags []string `json:"addTags,omitempty"`
 	RemoveTags []string `json:"removeTags,omitempty"`
 }
@@ -44,9 +44,9 @@ func NewTrackRequestWithDefaults() *TrackRequest {
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
-func (o *TrackRequest) GetEmail() Email {
+func (o *TrackRequest) GetEmail() string {
 	if o == nil || IsNil(o.Email) {
-		var ret Email
+		var ret string
 		return ret
 	}
 	return *o.Email
@@ -54,7 +54,7 @@ func (o *TrackRequest) GetEmail() Email {
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TrackRequest) GetEmailOk() (*Email, bool) {
+func (o *TrackRequest) GetEmailOk() (*string, bool) {
 	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *TrackRequest) HasEmail() bool {
 	return false
 }
 
-// SetEmail gets a reference to the given Email and assigns it to the Email field.
-func (o *TrackRequest) SetEmail(v Email) {
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *TrackRequest) SetEmail(v string) {
 	o.Email = &v
 }
 

@@ -2278,7 +2278,7 @@ components:
         email:
           description: Email address of the contact to track.
           example: user@example.com
-          type: email
+          type: string
         addTags:
           example:
           - new
