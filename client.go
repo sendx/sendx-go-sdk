@@ -54,6 +54,10 @@ type APIClient struct {
 
 	ContactAPI *ContactAPIService
 
+	EventAPI *EventAPIService
+
+	GettingStartedAPI *GettingStartedAPIService
+
 	ListAPI *ListAPIService
 
 	ReportsAPI *ReportsAPIService
@@ -81,6 +85,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.CampaignAPI = (*CampaignAPIService)(&c.common)
 	c.ContactAPI = (*ContactAPIService)(&c.common)
+	c.EventAPI = (*EventAPIService)(&c.common)
+	c.GettingStartedAPI = (*GettingStartedAPIService)(&c.common)
 	c.ListAPI = (*ListAPIService)(&c.common)
 	c.ReportsAPI = (*ReportsAPIService)(&c.common)
 	c.SenderAPI = (*SenderAPIService)(&c.common)

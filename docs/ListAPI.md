@@ -29,14 +29,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	sendx "github.com/sendx/sendx-go-sdk"
+	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	listRequest := *sendx.NewListRequest() // ListRequest | 
+	listRequest := *openapiclient.NewListRequest() // ListRequest | 
 
-	configuration := sendx.NewConfiguration()
-	apiClient := sendx.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.ListAPI.CreateList(context.Background()).ListRequest(listRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ListAPI.CreateList``: %v\n", err)
@@ -95,14 +95,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	sendx "github.com/sendx/sendx-go-sdk"
+	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	listId := "sendx123" // string | The ID of the list you want to delete
 
-	configuration := sendx.NewConfiguration()
-	apiClient := sendx.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.ListAPI.DeleteList(context.Background(), listId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ListAPI.DeleteList``: %v\n", err)
@@ -165,7 +165,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	sendx "github.com/sendx/sendx-go-sdk"
+	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
@@ -173,8 +173,8 @@ func main() {
 	limit := int32(10) // int32 | Limit the number of results returned. (optional)
 	search := "Marketing" // string | Search term to filter lists. (optional)
 
-	configuration := sendx.NewConfiguration()
-	apiClient := sendx.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.ListAPI.GetAllLists(context.Background()).Offset(offset).Limit(limit).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ListAPI.GetAllLists``: %v\n", err)
@@ -235,14 +235,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	sendx "github.com/sendx/sendx-go-sdk"
+	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
 	listId := "sendx123" // string | The ID of the list you want to retrieve
 
-	configuration := sendx.NewConfiguration()
-	apiClient := sendx.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.ListAPI.GetListById(context.Background(), listId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ListAPI.GetListById``: %v\n", err)
@@ -305,15 +305,15 @@ import (
 	"context"
 	"fmt"
 	"os"
-	sendx "github.com/sendx/sendx-go-sdk"
+	openapiclient "github.com/sendx/sendx-go-sdk"
 )
 
 func main() {
-	listRequest := *sendx.NewListRequest() // ListRequest | 
+	listRequest := *openapiclient.NewListRequest() // ListRequest | 
 	listId := "listId_example" // string | The ID of the list to be updated.
 
-	configuration := sendx.NewConfiguration()
-	apiClient := sendx.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 	resp, r, err := apiClient.ListAPI.UpdateList(context.Background(), listId).ListRequest(listRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ListAPI.UpdateList``: %v\n", err)

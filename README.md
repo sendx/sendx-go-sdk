@@ -62,6 +62,7 @@ func main() {
 
 ```
 
+Note, enum values are always validated and all unused variables are silently ignored.
 
 
 ## Documentation for API Endpoints
@@ -76,11 +77,15 @@ Class | Method | HTTP request | Description
 *CampaignAPI* | [**GetAllCampaigns**](docs/CampaignAPI.md#getallcampaigns) | **Get** /campaign | Get All Campaigns
 *CampaignAPI* | [**GetCampaignById**](docs/CampaignAPI.md#getcampaignbyid) | **Get** /campaign/{campaignId} | Get Campaign By Id
 *ContactAPI* | [**CreateContact**](docs/ContactAPI.md#createcontact) | **Post** /contact | Create a contact
-*ContactAPI* | [**DeleteContact**](docs/ContactAPI.md#deletecontact) | **Delete** /contact/{contactId} | Delete Contact
+*ContactAPI* | [**DeleteContact**](docs/ContactAPI.md#deletecontact) | **Delete** /contact/{identifier} | Delete Contact
 *ContactAPI* | [**GetAllContacts**](docs/ContactAPI.md#getallcontacts) | **Get** /contact | Get All Contacts
-*ContactAPI* | [**GetContactById**](docs/ContactAPI.md#getcontactbyid) | **Get** /contact/{contactId} | Get Contact by ID
-*ContactAPI* | [**UnsubscribeContact**](docs/ContactAPI.md#unsubscribecontact) | **Post** /contact/unsubscribe/{contactId} | Unsubscribe Contact
-*ContactAPI* | [**UpdateContact**](docs/ContactAPI.md#updatecontact) | **Put** /contact/{contactId} | Update Contact
+*ContactAPI* | [**GetContactById**](docs/ContactAPI.md#getcontactbyid) | **Get** /contact/{identifier} | Get Contact by Identifier
+*ContactAPI* | [**UnsubscribeContact**](docs/ContactAPI.md#unsubscribecontact) | **Post** /contact/unsubscribe/{identifier} | Unsubscribe Contact
+*ContactAPI* | [**UpdateContact**](docs/ContactAPI.md#updatecontact) | **Put** /contact/{identifier} | Update Contact
+*EventAPI* | [**CreateRevenueEvent**](docs/EventAPI.md#createrevenueevent) | **Post** /events/revenue | Record a revenue event for a specific contact
+*EventAPI* | [**PushCustomEvent**](docs/EventAPI.md#pushcustomevent) | **Post** /events/custom | Push a custom event associated with a contact
+*GettingStartedAPI* | [**IdentifyContact**](docs/GettingStartedAPI.md#identifycontact) | **Post** /contact/identify | Identify contact
+*GettingStartedAPI* | [**TrackingContact**](docs/GettingStartedAPI.md#trackingcontact) | **Post** /contact/track | Add Tracking info
 *ListAPI* | [**CreateList**](docs/ListAPI.md#createlist) | **Post** /list | Create List
 *ListAPI* | [**DeleteList**](docs/ListAPI.md#deletelist) | **Delete** /list/{listId} | Delete List
 *ListAPI* | [**GetAllLists**](docs/ListAPI.md#getalllists) | **Get** /list | Get All Lists
@@ -104,20 +109,27 @@ Class | Method | HTTP request | Description
  - [Contact](docs/Contact.md)
  - [ContactRequest](docs/ContactRequest.md)
  - [CreateResponse](docs/CreateResponse.md)
+ - [CustomEventRequest](docs/CustomEventRequest.md)
  - [DashboardStats](docs/DashboardStats.md)
  - [DeleteCampaign200Response](docs/DeleteCampaign200Response.md)
  - [DeleteRequest](docs/DeleteRequest.md)
  - [DeleteResponse](docs/DeleteResponse.md)
+ - [EventResponse](docs/EventResponse.md)
+ - [IdentifyRequest](docs/IdentifyRequest.md)
+ - [IdentifyResponse](docs/IdentifyResponse.md)
  - [LastSentCampaignStat](docs/LastSentCampaignStat.md)
  - [ListModel](docs/ListModel.md)
  - [ListRequest](docs/ListRequest.md)
  - [ReportData](docs/ReportData.md)
  - [Response](docs/Response.md)
+ - [RevenueEventRequest](docs/RevenueEventRequest.md)
  - [Sender](docs/Sender.md)
  - [SenderRequest](docs/SenderRequest.md)
  - [SenderResponse](docs/SenderResponse.md)
  - [Tag](docs/Tag.md)
  - [TagRequest](docs/TagRequest.md)
+ - [TrackRequest](docs/TrackRequest.md)
+ - [TrackResponse](docs/TrackResponse.md)
 
 
 ## Documentation For Authorization
